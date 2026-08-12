@@ -1,0 +1,435 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <!-- Die Seiten selbst sollen nie aus dem Zwischenspeicher kommen,
+         sonst passen HTML und Skripte nicht zusammen. -->
+    <meta http-equiv="Cache-Control" content="no-store" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Centaurus Advisory GmbH</title>
+    <meta
+      name="description"
+      content="Centaurus Advisory GmbH, Hünfeld. Digitalisierung und KI, Unternehmensentwicklung, Nachfolgelösungen für den Mittelstand."
+    />
+    <meta name="theme-color" content="#000000" />
+    <link rel="preload" href="fonts/archivo-variable.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="fonts/jetbrains-mono-variable.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="styles.css?v=44" />
+  </head>
+  <body>
+    <a class="skip" href="#inhalt" data-t="skip">Zum Inhalt springen</a>
+
+    <!-- Der Sternenhimmel entsteht erst im Knall und bleibt danach stehen. -->
+    <canvas id="sky" aria-hidden="true"></canvas>
+
+    <header class="nav" id="nav">
+      <a class="brand" href="index.html">
+        <span class="brand-name">Centaurus Advisory</span>
+      </a>
+
+      <button
+        class="nav-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="nav-links"
+        data-t="menu"
+      >
+        Menü
+      </button>
+
+      <nav class="nav-links" id="nav-links" aria-label="Hauptnavigation">
+        <a href="#ansatz" data-t="nav1">Ansatz</a>
+        <a href="#arbeit" data-t="nav2">Arbeit</a>
+        <a href="#kontakt" data-t="nav3">Kontakt</a>
+        <a href="team.html" data-t="nav4">Team</a>
+      </nav>
+
+      <div class="lang" aria-label="Sprache">
+        <button type="button" data-lang="de" aria-pressed="true">DE</button>
+        <span aria-hidden="true">/</span>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+    </header>
+
+    <main id="inhalt">
+      <!-- Der Hero ist zugleich die Bühne: die Schrift steht unten fest, oben
+           läuft die Figur durch. Alles hängt am Scrollstand. -->
+      <section class="hero" id="hero">
+        <div class="hero-stage">
+          <div class="ground" aria-hidden="true"></div>
+
+          <div class="star" id="star" aria-hidden="true">
+            <span class="star-glow" id="star-glow"></span>
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 0 L14 10 L24 12 L14 14 L12 24 L10 14 L0 12 L10 10 Z" />
+            </svg>
+          </div>
+
+          <!-- Das Strichmännchen läuft, findet den Stern und hebt ihn auf. -->
+          <div class="figure" id="figure" aria-hidden="true">
+            <svg viewBox="0 0 40 64" fill="none" stroke="currentColor"
+              stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+              <path class="limb leg-a" d="M20 40 L26 62" />
+              <path class="limb leg-b" d="M20 40 L14 62" />
+              <g class="fig-upper">
+                <path d="M20 40 L20 20" />
+                <circle cx="20" cy="13" r="6.2" />
+                <path class="limb arm-b" d="M20 24 L12 38" />
+                <path class="limb arm-a" d="M20 24 L28 38" />
+              </g>
+            </svg>
+          </div>
+
+          <!-- Im Knall wird aus dem Männchen der Zentaur aus dem Logo, und
+               der Stern setzt sich als Spitze auf seinen Pfeil. -->
+          <div class="centaur" id="centaur" aria-hidden="true">
+            <span class="gait">
+                <img class="logo-img gait-frame" src="assets/gait-0.png" alt="" />
+              </span>
+            <span class="at-bow"><svg class="arrow-svg" viewBox="0 0 100 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10 L84 10" /></svg><span class="arrow-star" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0 L14 10 L24 12 L14 14 L12 24 L10 14 L0 12 L10 10 Z" /></svg></span></span>
+          </div>
+
+          <div class="bang" id="bang" aria-hidden="true"></div>
+
+          <div class="hero-copy" id="hero-copy">
+            <!-- Zwei Titel an derselben Stelle: im Knall löst der zweite den
+                 ersten ab. -->
+            <div class="hero-titles">
+              <h1 class="hero-title" id="hero-title">
+                <span data-t="hero_pre">Der Mittelstand hat noch</span>
+                <span class="edit" id="edit"><span class="edit-old" data-t="hero_old">Zeit</span><span
+                    class="edit-new"
+                    ><span data-t="hero_new">fünf Jahre</span></span
+                  ></span>.
+              </h1>
+
+              <p class="hero-title hero-next" id="hero-next" data-t-html="proc_title">
+                Was ändert sich im Betrieb,<br />und in welcher Reihenfolge?
+              </p>
+            </div>
+
+            <p class="hero-sub" data-t-html="hero_sub">
+              Danach steht fest, wer mit KI schneller geworden ist und wer
+              verkauft. Wir entscheiden mit Ihnen, welche Hebel Sie ziehen und
+              in welcher Reihenfolge. <a href="#ansatz">Wie das abläuft.</a>
+            </p>
+
+            <span class="stamp mono" data-t="stamp"
+              >Centaurus Advisory GmbH, Hünfeld, gegründet 2026</span
+            >
+          </div>
+
+          <span class="scroll-hint mono" id="scroll-hint" aria-hidden="true" data-t="scroll"
+            >Scrollen</span
+          >
+        </div>
+      </section>
+
+      <!-- Zweite Szene: dieselbe Figur geht mit dem Stern in der Hand die vier
+           Phasen ab und verbindet sie dabei zu einem Sternbild. -->
+      <section class="process" id="ansatz">
+        <div class="process-stage">
+          <h2 class="process-title" data-t-html="proc_title">
+            Was ändert sich im Betrieb,<br />und in welcher Reihenfolge?
+          </h2>
+
+          <div class="track" aria-hidden="true">
+            <div class="track-line"></div>
+            <svg class="track-links" id="track-links"></svg>
+
+            <span class="stop" id="stop-0"></span>
+            <span class="stop" id="stop-1"></span>
+            <span class="stop" id="stop-2"></span>
+            <span class="stop" id="stop-3"></span>
+
+            <div class="figure2" id="figure2">
+              <span class="gait">
+                <img class="logo-img gait-frame" src="assets/gait-0.png" alt="" />
+              </span>
+            </div>
+
+            <!-- Der Pfeil sitzt auf der Sehne, bis er abgeschossen wird. -->
+            <div class="arrow" id="arrow-process"><svg class="arrow-svg" viewBox="0 0 100 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10 L84 10" /></svg><span class="arrow-star" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0 L14 10 L24 12 L14 14 L12 24 L10 14 L0 12 L10 10 Z" /></svg></span></div>
+          </div>
+
+          <div class="steps">
+            <article class="step" id="step-0">
+              <span class="mono step-label" data-t="step1_l">01 Orientierung</span>
+              <p class="step-text" data-t="step1_t">
+                Zwei Tage im Betrieb statt im Konferenzraum. Wir schauen zu, wo
+                Arbeit liegen bleibt und wer auf wen wartet.
+              </p>
+            </article>
+
+            <article class="step" id="step-1">
+              <span class="mono step-label" data-t="step2_l">02 Analyse</span>
+              <p class="step-text" data-t="step2_t">
+                Danach Zahlen statt Eindrücke. Durchlaufzeit pro Auftrag und
+                Deckungsbeitrag je Kunde, nachgerechnet statt geschätzt.
+              </p>
+            </article>
+
+            <article class="step" id="step-2">
+              <span class="mono step-label" data-t="step3_l">03 Entscheidung</span>
+              <p class="step-text" data-t="step3_t">
+                Zwei Hebel, in einer Reihenfolge. Alles andere bleibt bewusst
+                liegen, sonst versandet es wie jedes Pilotprojekt.
+              </p>
+            </article>
+
+            <article class="step" id="step-3">
+              <span class="mono step-label" data-t="step4_l">04 Umsetzung</span>
+              <p class="step-text" data-t="step4_t">
+                Wir bleiben, bis es läuft, und rechnen dieselben Zahlen ein
+                halbes Jahr später noch einmal nach.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Dritte Szene: ein Flug über eine Mittelstandsstadt. Die Kamera zoomt
+           an jeder Station hinein, wieder heraus und weiter zur nächsten. -->
+      <section class="world" id="arbeit">
+        <div class="world-stage">
+          <h2 class="world-title" data-t="world_title">Wer uns anruft</h2>
+
+          <div class="city" id="city" aria-hidden="true">
+            <svg viewBox="0 0 2400 1000" fill="none" stroke="currentColor"
+              stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+              <!-- ferne Silhouette -->
+              <g class="city-far">
+                <path d="M60 820 L60 690 L150 690 L150 820" />
+                <path d="M500 820 L500 640 L570 640 L570 820" />
+                <path d="M980 820 L980 660 L1060 660 L1060 820" />
+                <path d="M1080 820 L1080 700 L1140 700 L1140 820" />
+                <path d="M1560 820 L1560 670 L1650 670 L1650 820" />
+                <path d="M2200 820 L2200 700 L2270 700 L2270 820" />
+                <path d="M2290 820 L2290 730 L2350 730 L2350 820" />
+                <path d="M195 665 L215 665 M1000 690 L1040 690 M1580 700 L1630 700 M2220 730 L2250 730" />
+              </g>
+
+              <!-- Wohnhäuser -->
+              <g class="city-mid">
+                <g transform="translate(300 0)"><path d="M640 820 L640 745 L700 700 L760 745 L760 820" />
+                <path d="M690 820 L690 785 L720 785 L720 820" /></g>
+              </g>
+
+              <!-- 02 Werkhalle mit Sheddach -->
+              <g class="landmark" id="mark-1" transform="translate(300 0)">
+                <path d="M300 820 L300 730 M620 820 L620 730" />
+                <path d="M300 730 L340 700 L380 730 L420 700 L460 730 L500 700 L540 730 L580 700 L620 730" />
+                <path d="M556 702 L556 640 L580 640 L580 688" />
+                <path d="M420 820 L420 762 L500 762 L500 820" />
+                <path d="M330 790 L370 790 M540 790 L600 790" />
+              </g>
+
+              <!-- 04 Logistikhalle mit Sattelzug -->
+              <g class="landmark" id="mark-3" transform="translate(290 0)">
+                <path d="M1150 820 L1150 742 L1420 742 L1420 820" />
+                <path d="M1180 820 L1180 776 L1240 776 L1240 820" />
+                <path d="M1270 820 L1270 776 L1330 776 L1330 820" />
+                <path d="M1452 812 L1452 754 L1556 754 L1556 812" />
+                <path d="M1556 812 L1556 776 L1580 776 L1598 798 L1598 812" />
+                <circle cx="1480" cy="812" r="10" />
+                <circle cx="1532" cy="812" r="10" />
+                <circle cx="1584" cy="812" r="10" />
+              </g>
+
+              <!-- 03 Baukran -->
+              <g class="landmark" id="mark-2" transform="translate(340 0)">
+                <path d="M800 820 L800 430 M844 820 L844 430" />
+                <path d="M800 800 L844 760 M800 760 L844 720 M800 720 L844 680 M800 680 L844 640 M800 640 L844 600 M800 600 L844 560 M800 560 L844 520 M800 520 L844 480 M800 480 L844 440" />
+                <path d="M782 820 L862 820" />
+                <path d="M660 420 L1060 420" />
+                <path d="M822 356 L700 420 M822 356 L1000 420" />
+                <!-- Der Haken hängt über dem Rohbau -->
+                <path d="M960 420 L960 606 M946 606 L974 606" />
+
+                <!-- Halbfertiges Haus: unten steht es, oben fehlt noch alles -->
+                <path d="M884 820 L884 748 M1044 820 L1044 748" />
+                <path d="M872 748 L1056 748" />
+                <path d="M912 820 L912 786 L952 786 L952 820" />
+                <path d="M984 820 L984 786 L1016 786 L1016 820" />
+                <path d="M904 748 L904 686 M1024 748 L1024 700" />
+                <path d="M904 692 L966 692" />
+                <path d="M904 686 L950 656" />
+                <path class="scaffold" d="M868 820 L868 700 M868 782 L904 782 M868 742 L904 742 M868 702 L904 702" />
+              </g>
+
+              <!-- 01 Autohaus und Zulieferer -->
+              <g class="landmark" id="mark-0" transform="translate(-1470 0)">
+                <path d="M1690 820 L1690 762 M1830 820 L1830 736" />
+                <path d="M1690 762 L1830 736" />
+                <path d="M1722 820 L1722 756 M1758 820 L1758 749 M1794 820 L1794 743" />
+                <path d="M1660 820 L1660 700" />
+                <path d="M1642 700 L1642 664 L1680 664 L1680 700 Z" />
+                <path d="M1855 812 L1864 794 L1892 788 L1908 796 L1928 800 L1928 812 Z" />
+                <circle cx="1872" cy="812" r="7" />
+                <circle cx="1914" cy="812" r="7" />
+              </g>
+
+              <!-- 05 Hof mit Silo und Feld -->
+              <g class="landmark" id="mark-4">
+                <path d="M2000 820 L2000 690 C2000 660 2056 660 2056 690 L2056 820" />
+                <path d="M2000 740 L2056 740" />
+                <path d="M2080 820 L2080 752 L2150 706 L2220 752 L2220 820" />
+                <path d="M2130 820 L2130 780 L2170 780 L2170 820" />
+                <path d="M2250 814 L2260 786 L2270 814 M2286 814 L2296 786 L2306 814 M2322 814 L2332 786 L2342 814" />
+              </g>
+
+              <!-- Boden und Straße -->
+              <path class="city-line" d="M0 820 L2400 820" />
+              <path class="city-road" d="M0 900 L2400 900" />
+              <path class="city-road-mark" d="M40 900 L120 900 M200 900 L280 900 M360 900 L440 900 M520 900 L600 900 M680 900 L760 900 M840 900 L920 900 M1000 900 L1080 900 M1160 900 L1240 900 M1320 900 L1400 900 M1480 900 L1560 900 M1640 900 L1720 900 M1800 900 L1880 900 M1960 900 L2040 900 M2120 900 L2200 900 M2280 900 L2360 900" />
+            </svg>
+
+            <!-- Er steckt in der Stadt, nicht auf der Bühne: dadurch wandert
+                 und zoomt er mit der Kamera mit. -->
+            <div class="arrow city-arrow" id="arrow-city" aria-hidden="true"><svg class="arrow-svg" viewBox="0 0 100 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10 L84 10" /></svg><span class="arrow-star" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0 L14 10 L24 12 L14 14 L12 24 L10 14 L0 12 L10 10 Z" /></svg></span></div>
+          </div>
+
+          <!-- Steigt nur auf, solange ein Text steht, damit weiße Schrift nie
+               auf weißen Linien liegt. -->
+          <div class="world-scrim" id="world-scrim" aria-hidden="true"></div>
+
+          <div class="stops">
+            <article class="stop-card" id="card-0">
+              <span class="mono stop-label" data-t="card1_l">01 Automotive und Zulieferer</span>
+              <p class="stop-text" data-t="card1_t">
+                Zulieferer in zweiter und dritter Reihe, Autohäuser mit
+                Werkstatt. Wer an einem einzigen Abnehmer hängt, verhandelt
+                nicht, sondern hofft.
+              </p>
+            </article>
+
+            <article class="stop-card" id="card-1">
+              <span class="mono stop-label" data-t="card2_l">02 Maschinen- und Anlagenbau</span>
+              <p class="stop-text" data-t="card2_t">
+                Auftragsfertigung mit langen Durchlaufzeiten. Der Hebel liegt
+                selten in der Werkstatt, sondern in der Arbeitsvorbereitung.
+              </p>
+            </article>
+
+            <article class="stop-card" id="card-2">
+              <span class="mono stop-label" data-t="card3_l">03 Bau und Handwerk</span>
+              <p class="stop-text" data-t="card3_t">
+                Volle Auftragsbücher, zu wenige Leute. Wir rechnen nach, welcher
+                Auftrag sich überhaupt noch lohnt.
+              </p>
+            </article>
+
+            <article class="stop-card" id="card-3">
+              <span class="mono stop-label" data-t="card4_l">04 Logistik und Handel</span>
+              <p class="stop-text" data-t="card4_t">
+                Margen im Zehntelbereich. Wer heute disponiert wie vor zehn
+                Jahren, verliert an den, der es nicht mehr tut.
+              </p>
+            </article>
+
+            <article class="stop-card" id="card-4">
+              <span class="mono stop-label" data-t="card5_l">05 Landwirtschaft und Ernährung</span>
+              <p class="stop-text" data-t="card5_t">
+                Kapitalintensiv, wetterabhängig, und fast immer mit einer
+                Nachfolgefrage im Hintergrund.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Ruhepunkt zwischen Stadt und Formular: das Logo, sonst nichts. -->
+      <section class="mark" aria-label="Centaurus Advisory">
+        <img class="mark-img" src="assets/logo.png" alt="Centaurus Advisory" />
+      </section>
+
+      <!-- Kontakt. Bewusst ohne Szene: hier soll niemand mehr scrollen,
+           sondern schreiben. -->
+      <section class="contact" id="kontakt">
+        <div class="contact-inner">
+          <div class="contact-lead">
+            <h2 class="contact-title" data-t="c_title">Schreiben Sie, worum es geht.</h2>
+            <p class="contact-text" data-t="c_text">
+              Zwei Sätze reichen. Wir antworten selbst, meist am selben Tag,
+              und sagen auch ab, wenn wir nicht die Richtigen sind.
+            </p>
+            <a class="contact-mail" href="mailto:info@centaurus-advisory.de"
+              >info@centaurus-advisory.de</a
+            >
+            <p class="contact-adress mono" data-t="c_addr">
+              Centaurus Advisory GmbH, Hünfeld
+            </p>
+          </div>
+
+          <form class="contact-form" id="contact-form" novalidate>
+            <label class="field">
+              <span class="field-label mono" data-t="f_name">Name</span>
+              <input type="text" name="name" autocomplete="name" required />
+            </label>
+
+            <label class="field">
+              <span class="field-label mono" data-t="f_mail">E-Mail</span>
+              <input type="email" name="email" autocomplete="email" required />
+            </label>
+
+            <label class="field">
+              <span class="field-label mono"
+                 data-t-html="f_phone">Telefon <span class="optional">optional</span></span
+              >
+              <input type="tel" name="telefon" autocomplete="tel" />
+            </label>
+
+            <label class="field">
+              <span class="field-label mono"
+                 data-t-html="f_msg">Worum geht es? <span class="optional">optional</span></span
+              >
+              <textarea name="nachricht" rows="5"></textarea>
+            </label>
+
+            <label class="consent">
+              <input type="checkbox" name="einwilligung" required />
+              <span data-t-html="f_consent"
+                >Ich habe die
+                <a href="datenschutz.html">Datenschutzerklärung</a> gelesen und
+                bin mit der Verarbeitung meiner Angaben einverstanden.</span
+              >
+            </label>
+
+            <!-- Falle für Bots, für Menschen unsichtbar -->
+            <input type="text" name="firma_zusatz" class="honey" tabindex="-1" autocomplete="off" />
+
+            <div class="form-row">
+              <button class="submit mono" type="submit" data-t="f_send">Absenden</button>
+              <p class="form-status" id="form-status" role="status"></p>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <footer class="site-footer">
+        <div class="footer-inner">
+          <p class="footer-line mono" data-t="ft_addr">
+            Centaurus Advisory GmbH, Gartenstraße 14, 36088 Hünfeld
+          </p>
+          <nav class="footer-nav mono" aria-label="Rechtliches">
+            <a href="impressum.html" data-t="ft_imp">Impressum</a>
+            <a href="datenschutz.html" data-t="ft_ds">Datenschutz</a>
+            <a href="team.html" data-t="nav4">Team</a>
+          </nav>
+          <p class="footer-line mono">© 2026 Centaurus Advisory GmbH</p>
+        </div>
+      </footer>
+    </main>
+
+    <script src="js/lang/en.js?v=44" defer></script>
+    <script src="js/i18n.js?v=44" defer></script>
+    <script src="js/nav.js?v=44" defer></script>
+    <script src="js/sky.js?v=44" defer></script>
+    <script src="js/hero.js?v=44" defer></script>
+    <script src="js/scene.js?v=44" defer></script>
+    <script src="js/process.js?v=44" defer></script>
+    <script src="js/world.js?v=44" defer></script>
+    <script src="js/mark.js?v=44" defer></script>
+    <script src="js/contact.js?v=44" defer></script>
+  </body>
+</html>
